@@ -1,7 +1,7 @@
 <div class="row mt-4">
     <div class="col-md-12">
         @if (session()->has('success'))
-            <div class="alert-big alert alert-success alert-dismissible fade show" role="alert">
+            <div class="bg-green-100 border border-green-400 text-white-400 px-4 py-3 rounded relative" role="alert">
                 <div class="alert-content">
                     <h6 class='alert-heading'>Success</h6>
                     <p>{{ session()->get('success') }}</p>
@@ -39,7 +39,7 @@
             <br>
         @endif
         @if (Session::has('exist'))
-            <div class="alert-big alert alert-warning alert-dismissible fade show" role="alert">
+                <div class="bg-red-100 border border-red-400 text-orange-700 px-4 py-3 rounded relative" role="alert">
                 <div class="alert-content">
                     <h6 class='alert-heading'>Exist</h6>
                     <p>{{ Session::get('exist') }}</p>

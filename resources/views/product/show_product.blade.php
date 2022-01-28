@@ -13,61 +13,75 @@
                     @include('layouts.partials.system._page_navigation')
                     @include('layouts.partials.system._message')
                     <div class="">
-                        <div class="flex justify-content-end card-header p-8">
-                            <h4>
-                                Part Number {{ $product->part_number ?? '' }}
-                                Registered on {{ date('D d M Y, H:i:s', strtotime($product->created_at)) }}
-                            </h4>
-                            <a href="{{ url('product/'.$product->id . '/edit') }}" title="edit details for {{ $product->part_number ?? ''}}" data-tooltip-target="tooltip-no-arrow" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" > EDIT <i class="fas fa-pen text-light"></i> </a>
+                        <div class="flex">
+                            <div class="flex-1 justify-end border border-green-400 text-white-400 p-2 relative w-5/10 text-right divide-x-4">
+                                <b class="text-green-700">Part Number: <span class="p-2 text-blue-400">{{ $product->part_number ?? '' }}</span></b>
+                                &nbsp
+                                <b class="text-green-700 p-2">Registered on: <span class="text-blue-400">{{ date('D d M Y, H:i:s', strtotime($product->created_at)) }}</span></b>
+                                &nbsp
+                                <a href="{{ url('product/'.$product->id . '/edit') }}" title="edit details for {{ $product->part_number ?? ''}}" data-tooltip-target="tooltip-no-arrow" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" > EDIT <i class="fas fa-pen text-light"></i> </a>
+                            </div>
                         </div>
+
                         <br/>
-                        <section class="bg-white dark:bg-gray-900">
+                        <div class="bg-white dark:bg-gray-900 flex">
 
-                                <div class="container px-6 py-10 mx-auto">
-                                    <h4 class="card-title text-uppercase">Biography</h4>
-                                    <div class="flex">
-                                        <div class="flex-1">
-                                            <p>
-                                                <b>Product Name</b>:
-                                                <span>{{ $product->product_name ?? ''}}</span>
-                                            </p>
-                                        </div>
-                                        <div class="flex-1">
-                                            <p>
-                                                <b>Part Number:</b>:
-                                                <span>{{ $product->part_number ?? ''}}</span>
-                                            </p>
-                                        </div>
-                                        <div class="flex-1">
-                                            <p>
-                                                <b>Pieces per box:</b>
-                                                <span>{{ $product->piece_per_box ?? ''}}</span>
-                                            </p>
-                                        </div>
+                                <div class="flex-1 justify-center container px-6 py-10 mx-auto items-center">
+                                    <table class="">
+                                        <tbody>
+                                        <tr>
+                                            <td class="p-2 text-left text-lg">
+                                                <b>Product Name</b>
+                                            </td>
+                                            <td class="px-8">
+                                                {{ $product->product_name ?? ''}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 text-left text-lg">
+                                                <b>Part Number</b>
+                                            </td>
+                                            <td class="px-8">
+                                                {{ $product->part_number ?? ''}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 text-left text-lg">
+                                                <b>Pieces per box</b>
+                                            </td>
+                                            <td class="px-8">
+                                                {{ $product->piece_per_box ?? ''}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 text-left text-lg">
+                                                <b>Boxes per carton</b>
+                                            </td>
+                                            <td class="px-8">
+                                                {{ $product->boxes_per_carton ?? ''}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 text-left text-lg">
+                                                <b>Category</b>
+                                            </td>
+                                            <td class="px-8">
+                                                {{ $product->category ?? ''}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 text-left text-lg">
+                                                <b>Description</b>
+                                            </td>
+                                            <td class="px-8">
+                                                {{ $product->description ?? ''}}
+                                            </td>
+                                        </tr>
 
-                                    </div>
-                                    <div class="flex py-8">
-                                        <div class="flex-1">
-                                            <p>
-                                                <b>Boxes per carton:</b>
-                                                <span>{{ $product->boxes_per_carton ?? ''}}</span>
-                                            </p>
-                                        </div>
-                                        <div class="flex-1">
-                                            <p>
-                                                <b>Category:</b>
-                                                <span>{{ $product->category ?? ''}}</span>
-                                            </p>
-                                        </div>
-                                        <div class="flex-1">
-                                            <p>
-                                                <b>Description:</b>
-                                                <span>{{ $product->description ?? ''}}</span>
-                                            </p>
-                                        </div>
-                                    </div>
+                                        </tbody>
+                                    </table>
                                 </div>
-                        </section>
+                        </div>
                     </div>
                 </div>
             </div>

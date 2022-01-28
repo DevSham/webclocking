@@ -10,12 +10,12 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 
                 <div class="p-6 bg-white border-b border-gray-200">
-                 @include('layouts.partials.system._page_navigation')
+                        @include('layouts.partials.system._page_navigation')
                     <div class="col-lg-12 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">List Of  all products </h4>
-                                    <table class="min-w-full divide-y divide-gray-200">
+                                <h2 class="text-center"><b>List Of  all products</b></h2>
+                                    <table class="min-w-full divide-y divide-gray-200 py-4">
                                         <thead class="bg-green-700">
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">#</th>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Part Number</th>
@@ -39,13 +39,15 @@
                                                 <td class = "px-6 py-4 whitespace-nowrap">{{ $products->boxes_per_carton }}</td>
                                                 <td class = "px-6 py-4 whitespace-nowrap">{{ $products->description }}</td>
                                                 <td class = "px-6 py-4 whitespace-nowrap">
-                                                    <a href="/shares_transfer/{{ $products->id }}/edit" class="btn btn-primary">Edit</a>
+                                                    <a href="/product/{{ $products->id }}/edit" class="btn btn-primary">
+                                                        <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Edit</button>
+                                                    </a>
                                                 </td>
                                                 <td class = "px-6 py-4 whitespace-nowrap">
                                                     <form action="/product/{{ $products->id }}" method="POST">
                                                         {{method_field('DELETE')}}
                                                         {{ csrf_field() }}
-                                                        <input type="submit" class="btn btn-danger" value="Delete"/>
+                                                        <input type="submit" class="bg-red-500 rounded w-4/4 p-2 text-white" value="Delete"/>
                                                     </form><a href="/product/{{ $products->id }}/delete"></a>
                                                 </td>
                                             </tr>

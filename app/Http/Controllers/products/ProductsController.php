@@ -17,7 +17,7 @@ class ProductsController extends Controller
     public function index()
     {
         $pageTitle = 'All Products';
-        $product = Product::paginate(15);
+        $product = Product::paginate(9);
         $pageNavigation = ['Products'];
         $pageDescription = 'This is all products of the product';
 
@@ -34,8 +34,8 @@ class ProductsController extends Controller
     {
         $pageTitle = 'Product';
         $pageDescription = 'This is the registration of the product';
-        $pageNavigation = ['Products'];
-        return view('product.product_layout', compact('pageTitle', 'pageDescription', 'pageNavigation'));
+        $pageNavigation = ['New Product'];
+        return view('product.create_product', compact('pageTitle', 'pageDescription', 'pageNavigation'));
 
     }
 
@@ -85,7 +85,13 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        $pageTitle = ("Edit Product Number ".$product->part_number);
+        $pageNavigation = ['Products'];
+        $pageDescription = 'This is the edit product page';
+
+        return view('product.edit_product', compact('pageTitle', 'pageDescription', 'product', 'pageNavigation'));
+
     }
 
     /**
@@ -95,9 +101,17 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, $id)
     {
-        //
+        $product = Product::find($id);
+        $update_product = $product->update($request->all());
+//        $update_product = $product->update($request->except('part_number'));
+        if(!$update_product){
+            return redirect()
+                ->back()->with('failure', 'Failed to update product details. Please try again.');
+        }
+        return redirect()
+            ->back()->with('success', 'Product details updated successfully');
     }
 
     /**
