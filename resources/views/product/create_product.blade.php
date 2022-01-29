@@ -82,6 +82,7 @@
                                         <input type="submit" class="p-4 placeholder-blueGray-300 text-white bg-blue-500 rounded text-sm shadow focus:outline-none focus:ring w-1/2 ease-linear transition-all duration-150">
                                     </div>
                                 </div>
+                            </div>
                         </form>
                     </div>
                 </div>

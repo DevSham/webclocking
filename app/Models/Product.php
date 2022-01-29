@@ -15,5 +15,6 @@ class Product extends Model
         'description',
         'piece_per_box',
         'boxes_per_carton',
-        ];
+    ];
+
 }
