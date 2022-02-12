@@ -20,18 +20,28 @@
 
             <!-- Settings Dropdown -->
             <div class="sm:flex sm:items-center sm:ml-6 mr-40">
-                <a href="#" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-white hover:text-gray-800">
-                    <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-white mr-12"><i class="bx bx-bell"></i></span>
-                    <span class="text-sm font-medium">Notifications</span>
-                    <span class="ml-auto mr-5 text-sm bg-red-100 rounded-full px-3 py-px text-red-500">5</span>
-                </a>
-                 <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit">
-                        {{ __('Logout') }}
-                    </button>
-                </form>
+                <ul style="overflow:hidden;">
+                    <li style="display:inline-block; padding: 4px;">
+                        <a href="#" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-white hover:text-gray-800">
+                            Report
+                        </a>
+                    </li>
+                    <li style="display:inline-block; padding: 4px;">
+                        <a href="#" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-white hover:text-gray-800">
+                            Users
+                        </a>
+                    </li>
+                    <li style="display:inline-block; padding: 4px;">
+                        <!-- Authentication -->
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-white hover:text-gray-800">
+                            {{ __('LogOut') }}
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+
             </div>
         </div>
     </div>
