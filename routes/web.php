@@ -15,7 +15,7 @@ use App\Http\Controllers\products\CategoriesController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {
