@@ -48,11 +48,6 @@
             {{ $header ?? '' }}
         </div>
     </header>
-
-        <div class="sidebar h-full">
-            @include('layouts.sidebar')
-        </div>
-
         <!-- Page Content -->
         <main>
             {{ $slot ?? '' }}
