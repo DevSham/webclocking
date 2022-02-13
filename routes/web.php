@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\products\ProductsController;
-use App\Http\Controllers\products\CategoriesController;
+use App\Http\Controllers\LoggingController;
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,11 +18,8 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
-Route::resource('/product', ProductsController::class);
-Route::resource('/category',CategoriesController::class);
+Route::resource('/logs', LoggingController::class)->middleware(['auth']);
 
 require __DIR__.'/auth.php';
