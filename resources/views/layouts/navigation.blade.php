@@ -7,6 +7,8 @@
                 <div class="flex-shrink-0 flex items-center ml-40 text-white">
                     <a href="{{ route('dashboard') }}">
                         Clocking
+                        <br>
+                        <span>{{ Auth::user()->email}} ({{ Auth::user()->getRoleNames()->first() }})</span>
                     </a>
                 </div>
 
