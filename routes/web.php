@@ -30,6 +30,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('users', UserController::class);
     Route::resource('roles', RoleController::class);
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/report', [DashboardController::class, 'get_report_data'])->name('report');
 });
 
 require __DIR__.'/auth.php';

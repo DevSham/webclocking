@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Log;
+use App\Models\User;
 
 class DashboardController extends Controller
 {
@@ -63,6 +64,13 @@ class DashboardController extends Controller
         }else{
             return false;
         }
+    }
+
+    //get Report date
+    public function get_report_data(){
+        $users_logs = Log::all();
+        $users = User::all();
+        return view('reporting.report', compact('users_logs', 'users'));
     }
 
     /**

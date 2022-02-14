@@ -16,10 +16,10 @@ class LoggingController extends Controller
 
     function __construct()
     {
-        $this->middleware('permission:product-list|logging-create|logging-edit|logging-delete', ['only' => ['index','show']]);
-        $this->middleware('permission:logging-create', ['only' => ['create','store']]);
-        $this->middleware('permission:logging-edit', ['only' => ['edit','update']]);
-        $this->middleware('permission:logging-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:logging-list|logging-create|logging-edit|logging-delete', ['only' => ['index','show']]);
+//        $this->middleware('permission:logging-create', ['only' => ['create','store']]);
+//        $this->middleware('permission:logging-edit', ['only' => ['edit','update']]);
+//        $this->middleware('permission:logging-delete', ['only' => ['destroy']]);
     }
 
     public function index()

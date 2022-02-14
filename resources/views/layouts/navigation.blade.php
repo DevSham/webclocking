@@ -23,7 +23,7 @@
             <div class="sm:flex sm:items-center sm:ml-6 mr-40">
                 <ul style="overflow:hidden;">
                     <li style="display:inline-block; padding: 4px;">
-                        <a href="#" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-white hover:text-gray-800">
+                        <a href="{{ url('report') }}" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-white hover:text-gray-800">
                             Report
                         </a>
                     </li>
