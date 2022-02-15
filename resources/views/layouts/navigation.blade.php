@@ -1,7 +1,7 @@
-<nav x-data="{ open: false }" class="bg-green-500 border-b border-gray-100 bg-green-500">
+<nav x-data="{ open: false }" class="bg-green-500 border-b border-gray-100 bg-green-400">
     <!-- Primary Navigation Menu -->
-    <div class="w-full mx-auto sm:px-6 lg:px-8 fixed bg-green-500">
-        <div class="flex justify-between h-16">
+    <div class="w-full mx-auto sm:px-6 lg:px-8 fixed bg-green-400">
+        <div class="flex justify-between h-20">
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center ml-40 text-white">
@@ -14,8 +14,6 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex text-white">
-
-
                 </div>
             </div>
 
@@ -28,7 +26,7 @@
                         </a>
                     </li>
                     <li style="display:inline-block; padding: 4px;">
-                        <a href="#" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-white hover:text-gray-800">
+                        <a href="{{ url('users') }}" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-white hover:text-gray-800">
                             Users
                         </a>
                     </li>

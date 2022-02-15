@@ -27,8 +27,8 @@ class DashboardController extends Controller
     /**
      * Return current day today
      */
-    public function get_date_today(){
-        $day_name_today = null;
+    public static function get_date_today( $day_name_today = null){
+        $day_name_today;
         // Get the current year
         $current_year = date('y');
 
@@ -52,7 +52,7 @@ class DashboardController extends Controller
         return $day_name_today;
     }
 
-    //get records with time in
+    //get user logged in record with time_in
     public function get_time_in_records(){
         $user_log = Log::where('user_id', Auth::user()->id)
             ->where('status', 0)
@@ -66,11 +66,19 @@ class DashboardController extends Controller
         }
     }
 
-    //get Report date
+    //get Report data
     public function get_report_data(){
-        $users_logs = Log::all();
+        // Get current month and year
+        $year = now()->year;
+        $month = now()->month;
+
+        //Get month nme with 3 characters
+        $month_name = substr(Carbon::now()->format('F'), 0, 3);
         $users = User::all();
-        return view('reporting.report', compact('users_logs', 'users'));
+        $users_logs = Log::whereYear('created_at', '=', $year)
+            ->whereMonth('created_at', '=', $month)
+            ->get();
+        return view('reporting.report', compact('users_logs', 'users', 'year', 'month_name'));
     }
 
     /**

@@ -23,16 +23,16 @@
                                             <td class = "px-6 py-4 whitespace-nowrap">{{ $n++}}</td>
                                             <td class = "px-6 py-4 whitespace-nowrap">{{ $role->name}}</td>
                                             <td class = "px-6 py-4 whitespace-nowrap">
-                                                <a href="/product/{{ $role->id }}/edit" class="btn btn-primary">
+                                                <a href="/roles/{{ $role->id }}/edit" class="btn btn-primary">
                                                     <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Edit</button>
                                                 </a>
                                             </td>
                                             <td class = "px-6 py-4 whitespace-nowrap">
-                                                <form action="/product/{{ $role->id }}" method="POST">
+                                                <form action="/roles/{{ $role->id }}" method="POST">
                                                     {{method_field('DELETE')}}
                                                     {{ csrf_field() }}
                                                     <input type="submit" class="bg-red-500 rounded w-4/4 p-2 text-white" value="Delete"/>
-                                                </form><a href="/product/{{ $role->id }}/delete"></a>
+                                                </form><a href="/roles/{{ $role->id }}/delete"></a>
                                             </td>
                                         </tr>
                                     @endforeach

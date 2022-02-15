@@ -21,16 +21,17 @@ class UserController extends Controller
     //User permissions
     function __construct()
     {
-        $this->middleware('permission:user-list|user-create|user-edit|user-delete', ['only' => ['index','show']]);
-        $this->middleware('permission:user-create', ['only' => ['create','store']]);
-        $this->middleware('permission:user-edit', ['only' => ['edit','update']]);
-        $this->middleware('permission:user-delete', ['only' => ['destroy']]);
+//        $this->middleware('permission:user-list|user-create|user-edit|user-delete', ['only' => ['index','show']]);
+//        $this->middleware('permission:user-create', ['only' => ['create','store']]);
+//        $this->middleware('permission:user-edit', ['only' => ['edit','update']]);
+//        $this->middleware('permission:user-delete', ['only' => ['destroy']]);
     }
 
     public function index(Request $request)
     {
-        $data = User::orderBy('id','DESC')->paginate(5);
-        return view('users.index',compact('data'))
+//        $userRole = $user->roles->pluck('name','name')->all();
+        $users = User::orderBy('id','ASC')->paginate(5);
+        return view('users.all_users',compact('users'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
@@ -94,7 +95,7 @@ class UserController extends Controller
         $roles = Role::pluck('name','name')->all();
         $userRole = $user->roles->pluck('name','name')->all();
 
-        return view('users.edit',compact('user','roles','userRole'));
+        return view('users.edit_user',compact('user','roles','userRole'));
     }
 
     /**
