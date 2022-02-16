@@ -4,6 +4,7 @@
                 @include('layouts.partials.system._message')
                 <div class="flex">
                     <div class="flex-1 w-1/3">
+                        <!-- Display users -->
                         <h1>Users</h1>
                         @foreach($users as $user)
                             @if(Auth::user()->id == $user->id)
@@ -17,6 +18,8 @@
                             </div>
                         @endforeach
                     </div>
+
+                    <!-- Display user logs -->
                     <div class="shrink w-2/3">
                         <h1 class="p-2">Logs for {{$month_name}}, {{ $year }}</h1>
                         <div class="border border-solid h-full w-full">
@@ -30,21 +33,39 @@
                                     <th class="py-3 px-16">Time Out</th>
                                 </tr>
 
-                                @foreach($users_logs as $user_log)
-                                    <tr class="border-collapse">
-                                        <td class="py-3 px-16">{{ \App\Http\Controllers\DashboardController::get_date_today($user_log->created_at) }}</td>
-                                        <td class="py-3 px-16">{{ date('H:i:s', strtotime($user_log->time_in)) }} Hrs</td>
-                                        <td class="py-3 px-16">{{ date('H:i:s', strtotime($user_log->time_out)) }} Hrs</td>
-                                    </tr>
-                                @endforeach
+                                <!-- Authorisation -->
+                                @hasrole('admin')
+                                    @foreach($users_logs as $user_log)
+                                        <tr class="border-collapse">
+                                            <td class="py-3 px-16">{{ \App\Http\Controllers\DashboardController::get_date_today($user_log->created_at) }}</td>
+                                            <td class="py-3 px-16">{{ date('H:i:s', strtotime($user_log->time_in)) }} Hrs</td>
+                                            @if($user_log->time_out)
+                                                <td class="py-3 px-16">{{ date('H:i:s', strtotime($user_log->time_out)) }} Hrs</td>
+                                            @else
+                                                <td class="py-3 px-16">&nbsp</td>
+                                            @endif
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    @foreach($logged_in_user_logs as $logged_in_user_log)
+                                        <tr class="border-collapse">
+                                            <td class="py-3 px-16">{{ \App\Http\Controllers\DashboardController::get_date_today($logged_in_user_log->created_at) }}</td>
+                                            <td class="py-3 px-16">{{ date('H:i:s', strtotime($logged_in_user_log->time_in)) }} Hrs</td>
+                                            @if($logged_in_user_log->time_out)
+                                                <td class="py-3 px-16">{{ date('H:i:s', strtotime($logged_in_user_log->time_out)) }} Hrs</td>
+                                            @else
+                                                <td class="py-3 px-16">&nbsp</td>
+                                            @endif
+                                        </tr>
+                                    @endforeach
+                                @endhasrole
+
                                 </tbody>
                             </table>
                         </div>
                     </div>
-
                 </div>
-
+            </div>
         </div>
-    </div>
     </div>
 </x-app-layout>

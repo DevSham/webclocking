@@ -22,7 +22,7 @@ class CreateFirstUserSeeder extends Seeder
             'password' => bcrypt('admin')
         ]);
 
-        $role = Role::create(['name' => 'Admin']);
+        $role = Role::create(['name' => 'admin']);
 
         $permissions = Permission::pluck('id','id')->all();
 

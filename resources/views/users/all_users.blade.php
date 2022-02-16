@@ -38,13 +38,14 @@
                         </div>
                     </div>
                     <table class="min-w-full divide-y divide-gray-200 py-4">
+                        <!-- Table header -->
                         <thead class="bg-blue-400">
-                        <th scope="col" class="px-6 py-3 text-left text-l font-medium text-white tracking-wider">#</th>
-                        <th scope="col" class="px-6 py-3 text-left text-l font-medium text-white tracking-wider">Name</th>
-                        <th scope="col" class="px-6 py-3 text-left text-l font-medium text-white tracking-wider">Email</th>
-                        <th scope="col" class="px-6 py-3 text-left text-l font-medium text-white tracking-wider">Role</th>
-                        <th scope="col" class="px-6 py-3 text-left text-l font-medium text-white tracking-wider">Created</th>
-                        <th scope="col" class="px-6 py-3 text-left text-l font-medium text-white tracking-wider">Delete</th>
+                            <th scope="col" class="px-6 py-3 text-left text-l font-medium text-white tracking-wider">#</th>
+                            <th scope="col" class="px-6 py-3 text-left text-l font-medium text-white tracking-wider">Name</th>
+                            <th scope="col" class="px-6 py-3 text-left text-l font-medium text-white tracking-wider">Email</th>
+                            <th scope="col" class="px-6 py-3 text-left text-l font-medium text-white tracking-wider">Role</th>
+                            <th scope="col" class="px-6 py-3 text-left text-l font-medium text-white tracking-wider">Created</th>
+                            <th scope="col" class="px-6 py-3 text-left text-l font-medium text-white tracking-wider">Delete</th>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
                         <?php $n=1; ?>
@@ -58,7 +59,7 @@
                                     </td>
                                 <td class = "px-6 py-4 whitespace-nowrap">{{ $user->email}}</td>
                                 <td class = "px-6 py-4 whitespace-nowrap">{{ $user->getRoleNames()->first()}}</td>
-                                <td class = "px-6 py-4 whitespace-nowrap">{{ $user->created_at}}</td>
+                                <td class = "px-6 py-4 whitespace-nowrap">{{ date_format($user->created_at,"d/M/Y") }}</td>
                                 <td class = "px-6 py-4 whitespace-nowrap">
                                     @include('users.delete_modal')
                                 </td>

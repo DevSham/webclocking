@@ -1,24 +1,9 @@
 <div class="row mt-4">
     <div class="col-md-12">
         @if (session()->has('success'))
-            <div class="bg-green-100 border border-green-400 text-white-400 px-4 py-3 rounded relative" role="alert">
+            <div class="bg-green-500 border border-green-500 text-white text-center text-l pt-2 rounded relative" role="alert">
                 <div class="alert-content">
-                    <h6 class='alert-heading'>Success</h6>
                     <p>{{ session()->get('success') }}</p>
-                    <button type="button" class="close text-capitalize" data-dismiss="alert" aria-label="Close">
-                        <span data-feather="x" aria-hidden="true"></span>
-                    </button>
-                </div>
-            </div>
-            <br>
-        @endif
-    <!-- update is the same us success or failure. What changes is the message and the
-      alert class. -->
-        @if (Session::has('warning'))
-            <div class="alert-big alert alert-warning alert-dismissible fade show" role="alert">
-                <div class="alert-content">
-                    <h6 class='alert-heading'>Warning</h6>
-                    <p>{{ Session::get('warning') }}</p>
                     <button type="button" class="close text-capitalize" data-dismiss="alert" aria-label="Close">
                         <span data-feather="x" aria-hidden="true"></span>
                     </button>
@@ -38,19 +23,6 @@
             </div>
             <br>
         @endif
-        @if (Session::has('exist'))
-                <div class="bg-red-100 border border-red-400 text-orange-700 px-4 py-3 rounded relative" role="alert">
-                <div class="alert-content">
-                    <h6 class='alert-heading'>Exist</h6>
-                    <p>{{ Session::get('exist') }}</p>
-                    <button type="button" class="close text-capitalize" data-dismiss="alert" aria-label="Close">
-                        <span data-feather="x" aria-hidden="true"></span>
-                    </button>
-                </div>
-            </div>
-            <br>
-        @endif
-
         @if ($errors->any())
             <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
                 <ul>

@@ -25,13 +25,18 @@
                             Report
                         </a>
                     </li>
+
+                    <!-- check if user has the permission to access users menu-->
+                    @if(auth()->user()->can('user-list','user-create','user-edit','user-delete'))
                     <li style="display:inline-block; padding: 4px;">
                         <a href="{{ url('users') }}" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-white hover:text-gray-800">
                             Users
                         </a>
                     </li>
+                    @endif
+
                     <li style="display:inline-block; padding: 4px;">
-                        <!-- Authentication -->
+                    <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <button type="submit" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-white hover:text-gray-800">

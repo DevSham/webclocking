@@ -24,10 +24,10 @@ class LogsRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required',
-            'time_in' => 'required',
+            'user_id' => 'nullable',
+            'time_in' => 'nullable',
             'time_out' => 'nullable',
-            'status' => 'required|max:1',
+            'status' => 'numeric|max:1',
         ];
     }
 }

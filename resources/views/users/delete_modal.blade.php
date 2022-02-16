@@ -1,10 +1,10 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn bg-red-500 text-white" data-bs-toggle="modal" data-bs-target="#deleteModal">
+<button type="button" class="btn bg-red-500 text-white" data-bs-toggle="modal" data-bs-target="#deleteModal-{{$loop->iteration}}" >
     delete
 </button>
 
 <!-- Delete Modal -->
-<div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal-{{$loop->iteration}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog pt-48">
         <div class="modal-content">
             <div class="modal-body h-40 p-20 text-md">

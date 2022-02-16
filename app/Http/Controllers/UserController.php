@@ -21,19 +21,18 @@ class UserController extends Controller
     //User permissions
     function __construct()
     {
-//        $this->middleware('permission:user-list|user-create|user-edit|user-delete', ['only' => ['index','show']]);
-//        $this->middleware('permission:user-create', ['only' => ['create','store']]);
-//        $this->middleware('permission:user-edit', ['only' => ['edit','update']]);
-//        $this->middleware('permission:user-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:user-list|user-create|user-edit|user-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:user-create', ['only' => ['create','store']]);
+        $this->middleware('permission:user-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:user-delete', ['only' => ['destroy']]);
     }
 
     public function index(Request $request)
     {
-//        $userRole = $user->roles->pluck('name','name')->all();
         $roles = Role::pluck('name','name')->all();
         $users = User::orderBy('id','ASC')->paginate(5);
-        return view('users.all_users',compact('users', 'roles'))
-            ->with('i', ($request->input('page', 1) - 1) * 5);
+        return view('users.all_users',compact('users', 'roles'));
+//            ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -129,7 +128,7 @@ class UserController extends Controller
         $user->assignRole($request->input('role'));
 
         return redirect()->route('users.index')
-            ->with('success','User updated successfully');
+            ->with('success','User account successfully edited');
     }
 
     /**
@@ -141,7 +140,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
-        return redirect()->route('users.all_users')
+        return redirect()->route('users.index')
             ->with('success','User deleted successfully');
     }
 }

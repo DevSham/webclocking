@@ -34,8 +34,6 @@
                             @csrf
                             {{ method_field('PUT') }}
                             <input type="hidden" name="time_out" value="{{ date('Y-m-d H:i:s') }}">
-                            <input type="hidden" name="time_in" value="{{ $has_time_in->time_in }}">
-                            <input type="hidden" name="user_id" value="{{ $has_time_in->user_id }}">
                             <input type="hidden" name="status" value="1">
                             <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded" type="submit">
                                 {{ __('TimeOut') }}

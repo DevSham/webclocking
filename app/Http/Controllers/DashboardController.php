@@ -54,7 +54,7 @@ class DashboardController extends Controller
 
     //get user logged in record with time_in
     public function get_time_in_records(){
-        $user_log = Log::where('user_id', Auth::user()->id)
+        $user_log = Log::where('user_id', '=', Auth::user()->id)
             ->where('status', 0)
             ->orderByDesc('id')
             ->limit(1)
@@ -72,13 +72,23 @@ class DashboardController extends Controller
         $year = now()->year;
         $month = now()->month;
 
-        //Get month nme with 3 characters
+        //Get month name with 3 characters
         $month_name = substr(Carbon::now()->format('F'), 0, 3);
+
+        //get all users
         $users = User::all();
+
+        // get current month logs
         $users_logs = Log::whereYear('created_at', '=', $year)
             ->whereMonth('created_at', '=', $month)
             ->get();
-        return view('reporting.report', compact('users_logs', 'users', 'year', 'month_name'));
+
+        //get logged in user logs
+        $logged_in_user_logs = Log::whereYear('created_at', '=', $year)
+            ->whereMonth('created_at', '=', $month)
+            ->where('user_id', '=', Auth::user()->id)
+            ->get();
+        return view('reporting.report', compact('users_logs', 'users', 'year', 'month_name', 'logged_in_user_logs'));
     }
 
     /**
