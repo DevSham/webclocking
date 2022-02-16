@@ -5,6 +5,7 @@ use App\Http\Controllers\LoggingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SocialiteAuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,5 +29,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/report', [DashboardController::class, 'get_report_data'])->name('report');
 });
+
+Route::get('google', [SocialiteAuthController::class, 'googleRedirect'])->name('auth/google');
+Route::get('/auth/google-callback', [SocialiteAuthController::class, 'loginWithGoogle']);
 
 require __DIR__.'/auth.php';

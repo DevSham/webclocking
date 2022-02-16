@@ -35,6 +35,11 @@
                 <x-button class="ml-3 b bg-green-500">
                     {{ __('Log in to Clocking') }}
                 </x-button>
+
+                <!-- Google Login Button -->
+                <a href="{{ route('auth/google') }}" class="btn btn-danger">
+                    {{ __('Login with Google') }}
+                </a>
             </div>
         </form>
     </x-auth-card>
