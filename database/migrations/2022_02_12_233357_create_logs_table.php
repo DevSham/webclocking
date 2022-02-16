@@ -19,7 +19,7 @@ class CreateLogsTable extends Migration
             $table->timestamp('time_in');
             $table->timestamp('time_out')->nullable();
             $table->unsignedInteger('status')->default(0);
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
             $table->timestamps();
         });
     }

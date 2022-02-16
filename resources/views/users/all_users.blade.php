@@ -19,15 +19,18 @@
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                                            <h5 class="modal-title" id="staticBackdropLabel">Add User</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            ...
+                                            @include('users.create_user')
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Understood</button>
+                                            <button type="button" class="btn bg-gray-400 text-white" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn bg-green-400 text-white" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                                + Add User
+                                            </button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -57,11 +60,11 @@
                                 <td class = "px-6 py-4 whitespace-nowrap">{{ $user->getRoleNames()->first()}}</td>
                                 <td class = "px-6 py-4 whitespace-nowrap">{{ $user->created_at}}</td>
                                 <td class = "px-6 py-4 whitespace-nowrap">
-                                    <form action="/users/{{ $user->id }}" method="POST">
+                                    <form action="/users/{{ $user->id }}/delete" method="POST">
                                         {{method_field('DELETE')}}
                                         {{ csrf_field() }}
-                                        <input type="submit" class="bg-red-500 rounded w-4/4 p-2 text-white" value="Delete"/>
-                                    </form><a href="/product/{{ $user->id }}/delete"></a>
+                                        <input type="submit" class="bg-red-500 rounded w-4/4 p-2 text-white" value="Delete" onclick="alert("woo")"/>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

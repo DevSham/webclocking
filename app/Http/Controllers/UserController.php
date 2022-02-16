@@ -30,8 +30,9 @@ class UserController extends Controller
     public function index(Request $request)
     {
 //        $userRole = $user->roles->pluck('name','name')->all();
+        $roles = Role::pluck('name','name')->all();
         $users = User::orderBy('id','ASC')->paginate(5);
-        return view('users.all_users',compact('users'))
+        return view('users.all_users',compact('users', 'roles'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
@@ -43,7 +44,7 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::pluck('name','name')->all();
-        return view('users.create',compact('roles'));
+        return view('users.create_user',compact('roles'));
     }
 
     /**
@@ -110,7 +111,7 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
-            'password' => 'same:confirm-password',
+            'password' => 'required',
             'roles' => 'required'
         ]);
 
@@ -127,7 +128,7 @@ class UserController extends Controller
 
         $user->assignRole($request->input('roles'));
 
-        return redirect()->route('users.index')
+        return redirect()->route('users.all_users')
             ->with('success','User updated successfully');
     }
 
@@ -140,7 +141,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
-        return redirect()->route('users.index')
+        return redirect()->route('users.all_users')
             ->with('success','User deleted successfully');
     }
 }
