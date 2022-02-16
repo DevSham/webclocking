@@ -27,9 +27,9 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn bg-gray-400 text-white" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn bg-green-400 text-white" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                            <x-button class="bg-green-400 text-white" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                                 + Add User
-                                            </button>
+                                            </x-button>
                                             </form>
                                         </div>
                                     </div>
