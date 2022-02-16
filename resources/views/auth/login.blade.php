@@ -32,14 +32,18 @@
             </div>
             <!-- login button -->
             <div class="flex items-center justify-end mt-4">
-                <x-button class="ml-3 b bg-green-500">
+                <x-button class="ml-3 bg-green-500">
                     {{ __('Log in to Clocking') }}
                 </x-button>
 
+                &nbsp
                 <!-- Google Login Button -->
-                <a href="{{ route('auth/google') }}" class="btn btn-danger">
-                    {{ __('Login with Google') }}
-                </a>
+                <x-button class="bg-red-500 px-4">
+                    <a href="{{ route('auth/google') }}">
+                        {{ __('Login with Google') }}
+                    </a>
+                </x-button>
+
             </div>
         </form>
     </x-auth-card>

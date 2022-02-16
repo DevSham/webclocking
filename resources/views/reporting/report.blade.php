@@ -6,17 +6,25 @@
                     <div class="flex-1 w-1/3">
                         <!-- Display users -->
                         <h1>Users</h1>
-                        @foreach($users as $user)
-                            @if(Auth::user()->id == $user->id)
+                        @hasrole('admin')
+                            @foreach($users as $user)
+                                @if(Auth::user()->id == $user->id)
+                                    <div class="w-5/6 p-2 h-16 bg-blue-500 text-white">
+                                @else
+                                    <div class="w-5/6 p-2 h-16">
+                                @endif
+                                    {{ $user->name }}
+                                    <br>
+                                    {{ $user->email}}
+                                </div>
+                            @endforeach
+                        @else
                             <div class="w-5/6 p-2 h-16 bg-blue-500 text-white">
-                            @else
-                                <div class="w-5/6 p-2 h-16">
-                            @endif
-                                {{ $user->name }}
-                                <br>
-                                {{ $user->email}}
+                                {{ Auth::user()->name }}
+                                <br/>
+                                {{ Auth::user()->email }}
                             </div>
-                        @endforeach
+                        @endhasrole
                     </div>
 
                     <!-- Display user logs -->
