@@ -112,7 +112,7 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
             'password' => 'required',
-            'roles' => 'required'
+            'role' => 'required'
         ]);
 
         $input = $request->all();
@@ -126,9 +126,9 @@ class UserController extends Controller
         $user->update($input);
         DB::table('model_has_roles')->where('model_id',$id)->delete();
 
-        $user->assignRole($request->input('roles'));
+        $user->assignRole($request->input('role'));
 
-        return redirect()->route('users.all_users')
+        return redirect()->route('users.index')
             ->with('success','User updated successfully');
     }
 

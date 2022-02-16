@@ -20,11 +20,7 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-
-
-
-
-
+//prevent unauthorized access to these routes
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('/logs', LoggingController::class);
     Route::resource('users', UserController::class);

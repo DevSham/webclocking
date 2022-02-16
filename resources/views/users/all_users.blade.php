@@ -16,7 +16,7 @@
 
                             <!-- Modal -->
                             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-dialog modal-dialog-centered modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="staticBackdropLabel">Add User</h5>
@@ -39,12 +39,12 @@
                     </div>
                     <table class="min-w-full divide-y divide-gray-200 py-4">
                         <thead class="bg-blue-400">
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white tracking-wider">#</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white tracking-wider">Name</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white tracking-wider">Email</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white tracking-wider">Role</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white tracking-wider">Created</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white tracking-wider">Delete</th>
+                        <th scope="col" class="px-6 py-3 text-left text-l font-medium text-white tracking-wider">#</th>
+                        <th scope="col" class="px-6 py-3 text-left text-l font-medium text-white tracking-wider">Name</th>
+                        <th scope="col" class="px-6 py-3 text-left text-l font-medium text-white tracking-wider">Email</th>
+                        <th scope="col" class="px-6 py-3 text-left text-l font-medium text-white tracking-wider">Role</th>
+                        <th scope="col" class="px-6 py-3 text-left text-l font-medium text-white tracking-wider">Created</th>
+                        <th scope="col" class="px-6 py-3 text-left text-l font-medium text-white tracking-wider">Delete</th>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
                         <?php $n=1; ?>
@@ -60,16 +60,13 @@
                                 <td class = "px-6 py-4 whitespace-nowrap">{{ $user->getRoleNames()->first()}}</td>
                                 <td class = "px-6 py-4 whitespace-nowrap">{{ $user->created_at}}</td>
                                 <td class = "px-6 py-4 whitespace-nowrap">
-                                    <form action="/users/{{ $user->id }}/delete" method="POST">
-                                        {{method_field('DELETE')}}
-                                        {{ csrf_field() }}
-                                        <input type="submit" class="bg-red-500 rounded w-4/4 p-2 text-white" value="Delete" onclick="alert("woo")"/>
-                                    </form>
+                                    @include('users.delete_modal')
                                 </td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
+                    <!-- pagination -->
                     <div class="flex">
                         <div class="flex-1 justify-end">
                             {{ $users->links('pagination::tailwind') }}
@@ -78,6 +75,7 @@
                 </div>
             </div>
         </div>
-    </div>
+        </div>
     </div>
 </x-app-layout>
+

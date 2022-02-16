@@ -13,6 +13,12 @@ use Illuminate\Validation\Rules;
 
 class RegisteredUserController extends Controller
 {
+    //prevent unauthorised user from registering anyone.
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display the registration view.
      *

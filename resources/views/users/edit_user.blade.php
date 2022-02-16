@@ -6,7 +6,7 @@
             <h1 class="text-4xl"><bold>Edit User</bold></h1>
             <form method="POST" action="{{ url('users/'.$user->id)  }}" class="pt-8">
             @csrf
-                {{ method_field('PUT') }}
+            {{ method_field('PUT') }}
 
             <!-- Name -->
             <x-label for="name" :value="__('Name:')" />
